@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <style>
+    
+    	h1 {
+    		text-align: center;
+    	}
+    
+    	thead {
+    		background-color: rgba(0,0,0,0.05);
+    		font-weight: bold;
+    	}
+    	
+    	img {
+    		padding: 1em;
+    		margin: 0 auto;
+    		margin-top: 1em;
+    		display: block;
+    	}
+    
+    </style>
+    
+</head>
+<body>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	
+	<div class="container">
+		<span th:if="${products.size() gt 0}">
+			<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+			<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+			<audio autoplay="true" loop="true">
+		  		<source src="https://upload.wikimedia.org/wikipedia/en/c/c3/Super_Mario_Bros._theme.ogg" type="audio/ogg" />
+			</audio>
+			<img class="logo" src="http://i.picasion.com/gl/86/7UxW.gif" />	
+	   	</span>
+    
+    	<span th:if="${products.size() == 0}">
+    		<h1>Products</h1>
+    	</span>
+    
+		<hr />
+		
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<table class="table table-hover">
+		    		<thead>
+		        		<tr>
+		            		<td>Name</td>
+				            <td>Description</td>
+				            <td>Price</td>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <tr th:each="product: ${products}">
+				            <td th:text="${product.name}"/>
+				            <td th:text="${product.description}"/>
+				            <td th:text="${product.price}"/>
+				        </tr>
+				    </tbody>
+				</table>
+			</div>
+		</div>
+		
+		<span th:if="${products.size() gt 0}">
+			<img src="https://s-media-cache-ak0.pinimg.com/originals/0d/ff/4a/0dff4a644fb462e8897218e9b9dcc7a3.jpg" />
+		</span>
+	</div>
+</body>
+</html>
